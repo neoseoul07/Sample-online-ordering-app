@@ -1,6 +1,8 @@
 package foodonlineordering;
+import java.sql.SQLException;
+import java.util.*;
 
-public abstract class User { 
+public class User { 
 	
 	String name;
 	int user_id;
@@ -10,10 +12,11 @@ public abstract class User {
 	String state;
 	int pin;
 	
-	public abstract void login();
-
-	public abstract void logout();
-
+	public ArrayList<Order> myOrders() throws NumberFormatException, SQLException
+	{
+		DBOperation db1=new DBOperation();
+		return Order.getArrayListFromResultSet(db1.select("select * from Order where cust_id = this.user_id"));
+	}
 	
 	
 }

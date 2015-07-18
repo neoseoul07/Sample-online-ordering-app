@@ -12,20 +12,18 @@ import java.util.Scanner;
 
 public class DBOperation {
 
-	public void select(String tname)
+	public ResultSet select(String qry)
 	{
 		
 		Connection con=null;
 		Statement st=null;
 		ResultSet rs=null;
 		con=DBConnection.getConnection();
-		
 		try {
 			st=con.createStatement();
 			
-			String qry="select * from "+tname;
 			rs=st.executeQuery(qry);
-			ResultSetMetaData rsmd=rs.getMetaData();
+			/*ResultSetMetaData rsmd=rs.getMetaData();
 			
 			int cols=rsmd.getColumnCount();
 			for(int i=1;i<=cols;i++)
@@ -33,25 +31,14 @@ public class DBOperation {
 			
 			System.out.println("");
 			
-			
-			while(rs.next())
-			{
-				for(int i=1;i<=cols;i++)
-						System.out.print(rs.getString(i)+" 		");
-				
-				System.out.println("");
-			}
-			
-			
-			
+			*/
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+		return rs;
 	}
+	
 	public void insert()
 	{
 		Connection con=null;
