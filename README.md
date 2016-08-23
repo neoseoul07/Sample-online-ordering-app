@@ -1,1 +1,1 @@
-# snapdealtraining
+Sample App in Spring MVC
